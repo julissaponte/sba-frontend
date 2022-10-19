@@ -1,0 +1,38 @@
+<app-header></app-header>
+<mat-card class="formulario ">
+    <div>
+        <mat-toolbar color="primary" class="mt-5 header-form">
+            <h1>LOGIN</h1>
+        </mat-toolbar>
+    </div>
+
+    <div>
+        <img class="logo" src="../../../assets/img/avatar.png" alt="">
+    </div>
+    
+    <form [formGroup]="loginForm" class="form-login">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Usuario</mat-label>
+         
+            <input matInput placeholder="Ingresa tu usuario" formControlName="usuario">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput placeholder="Ingresa tu contraseña" formControlName="password">
+            <mat-error *ngIf="password.hasError('minlength')">Mínimo 4 caracteres</mat-error>
+        </mat-form-field>
+
+        <span>
+            <a routerLink="/register">¿Aun no tienes una cuenta?</a>
+        </span>
+
+        <button (click)="login()" class="button-login" [disabled]="loginForm.invalid" mat-raised-button color="primary">
+            INGRESAR
+        </button>
+
+    </form>
+
+</mat-card>
+

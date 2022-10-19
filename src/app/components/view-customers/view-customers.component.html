@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="contenedor">
+    <div class="header-contenedor">
+        <div>
+            <h1>Clientes</h1>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <!-- <mat-label>Enter your password</mat-label> -->
+                <input matInput placeholder="Buscar customers">
+                <button mat-icon-button matSuffix >
+                    <span class="material-icons"> search </span>
+                </button>
+            </mat-form-field>
+        </div>
+        
+    <mat-progress-bar *ngIf="progress_bar" mode="query"></mat-progress-bar>
+    </div>
+    
+    <div class="body-contenedor">
+        
+        <div class="card-customer" *ngFor="let customer of listCustomers">
+            <mat-card class="example-card" >
+                <mat-card-header>
+                  <mat-card-title>{{customer.firstName}} {{customer.lastName}}</mat-card-title>
+                  <mat-card-subtitle>{{customer.account.username}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="../../../assets/img/user-1633249_1280-768x749.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                 
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="abrirModalDetail(customer)" color="primary">Detalles</button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+    </div>
+
+</div>

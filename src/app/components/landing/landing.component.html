@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+
+<body>
+<nav class="sidebar">
+    <a href="#home" class="sidebar-item"><i class="fas fa-home"></i> Inicio</a>
+    <a href="#about" class="sidebar-item">Acerca de nosotros</a>
+    <a href="#services" class="sidebar-item">Servicios</a>
+    <a href="#contact" class="sidebar-item">Contáctanos</a>
+    <a routerLink="/login" class="sidebar-item" >Iniciar sesión</a>
+    <a routerLink="/register" class="sidebar-item" >Registrate</a>
+    <a href="javascript:void(0)" class="close"><i class="fa fa-times"></i></a>
+</nav>
+<a href="javascript:void(0)" class="open"><i class="fa fa-bars"></i></a>
+<header id="home">
+    <img src="../../../assets/img/avatar.png" alt="Mi foto" class="avatar">
+    <h2 class="header-name">D-HOME TECHNICAL</h2>
+    <h5 class="header-title">Encuentra los técnicos más solicitados y 100% confiables o únete a nuestra gran comunidad de trabajadores independientes aquí...Todo en un solo lugar</h5>
+    <a href="#" class="btn">
+        Conócenos más
+    </a>
+</header>
+<section id="about">
+    <div class="container">
+        <h1 class="section-title">Acerca de nosotros</h1>
+        <p class="about-content">
+            Somos una plataforma que surgió en el 2020 debido a la crisis que está atravesando actualmente el Perú.
+            Nuestra plataforma busca que más personas logren mostrar sus habilidades al público. Por ello, nuestro
+            objetivo es proporcionar
+            la mejor experiencia entre nuestros clientes y usuarios, trabajadores independientes.
+            D-Home Technical une trabajadores independientes con clientes que requieran diferentes servicios.
+            Además, contamos con un excelente equipo, dedicado y amigable; asimismo, luchamos cada día para mejorar nuestra plataforma y darles excelente soporte. ¡Lo hacemos con una sonrisa!
+            <br>
+            <!-- <center>
+              <img src="img/fondos/cliente.jpg" title="Inicio de clientes">
+        <img src="img/fondos/trabajador.jpg" title="Inicio de trabajadores">
+            </center> -->
+
+
+        </p>
+
+    </div>
+</section>
+<section id="services">
+    <div class="container">
+        <h1 class="section-title">Servicios</h1>
+        <div class="card">
+            <i class="fas fa-home"></i>
+            <div class="container">
+                <h4 class="title">Servicio a domicilio</h4>
+                <p>El usuario (trabajador independiente) podrá compartir sus trabajos ya realizados anteriormente, y
+                    los clientes tendrán la opción de publicar una reseña. Además, valorar al usuario con respecto al servicio brindado.</p>
+            </div>
+        </div>
+        <div class="card">
+            <i class="fas fa-user"></i>
+            <div class="container">
+                <h4 class="title">Cliente</h4>
+                <p> El cliente tendrá la opción de búsqueda simple y con filtros, para así obtener una respuesta que se adapte a él. Además, podrá visualizar
+                diferentes técnicos que se mostraran en un ranking de los más solicitados y con las mejores reseñas.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="contact">
+    <div class="container">
+        <h1 class="section-title">Contáctanos</h1>
+        <form>
+            <label>
+                <input type="text" class="form-input" placeholder="Nombre">
+            </label>
+            <label>
+                <input type="text" class="form-input" placeholder="Correo electrónico">
+            </label>
+            <label>
+                <input type="text" class="form-input" placeholder="Asunto">
+            </label>
+            <label>
+                <textarea class="form-input" cols="30" rows="5"> </textarea>
+            </label>
+            <button type="button" class="form-button"> Enviar </button>
+        </form>
+    </div>
+</section>
+<footer>
+    <div class="icons">
+
+
+        <a href="#" class="fab fa-facebook-f"></a><a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-whatsapp"></a>
+    </div>
+    <p>Síguenos en todas nuestras redes sociales</p>
+    <p> contáctanos:d-home@gmail.com</p>
+</footer>
+
+<script src="./js/main.js"></script>
+</body>
+
+</html>

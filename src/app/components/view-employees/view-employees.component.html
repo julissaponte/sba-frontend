@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="contenedor">
+    <div class="header-contenedor">
+        <div>
+            <h1>Trabajadores</h1>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Filtrar por género</mat-label>
+            <mat-select>
+              <mat-option (click)="filtrar(gender.value)" *ngFor="let gender of genders" [value]="gender.value">
+                {{gender.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+    </div>
+    <mat-progress-bar *ngIf="progress_bar" mode="query"></mat-progress-bar>
+    <div class="body-contenedor">
+
+        <div class="card-customer" *ngFor="let employee of listEmployees">
+            <mat-card class="example-card" >
+                <mat-card-header>
+                  <mat-card-title>{{employee.firstName}} {{employee.lastName}}</mat-card-title>
+                  <mat-card-subtitle>{{employee.specialty.name}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="../../../assets/img/user-1633249_1280-768x749.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="abrirModalDetail(employee)" color="primary">Detalles</button>
+                  <button mat-raised-button (click)="abrirModalCreateAppo(employee)" color="warn">Contratar</button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+    </div>
+
+</div>

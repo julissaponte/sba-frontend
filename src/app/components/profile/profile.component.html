@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div>
+    <div class="contenedor" *ngIf="user">
+      <mat-progress-bar *ngIf="progress_bar" mode="query"></mat-progress-bar>
+      <mat-card>
+       
+        <button (click)="abrirModalEditar()" class="button-editar" mat-raised-button color="primary"> Editar <span class="material-icons">
+          edit
+          </span></button>
+        <div class="img-profile">
+          <img class="img-user" src="../../../assets/img/user-1633249_1280-768x749.png" alt="">
+        </div>
+        
+        <div class="datos">
+          <div>
+            <h3>Nombre</h3>
+            <h4>{{user.firstName}}</h4>
+          </div>
+  
+          <div>
+            <h3>Apellidos</h3>
+            <h4>{{user.lastName}}</h4>
+          </div>
+  
+          <div>
+            <h3>Celular</h3>
+            <h4>{{user.cellphone}}</h4>
+          </div>
+  
+          <div>
+            <h3>Correo</h3>
+            <h4>{{user.email}}</h4>
+          </div>
+  
+          <div>
+            <h3>Ciudad</h3>
+            <h4>{{user.city}}</h4>
+          </div>
+  
+          <div>
+            <h3>Distrito</h3>
+            <h4>{{user.district}}</h4>
+          </div>
+  
+          <div *ngIf="metadata.usertype == 2">
+            <h3>Fecha de cumpleaños</h3>
+            <h4>{{user.birthday}}</h4>
+          </div>
+  
+          <div>
+            <h3>Usuario</h3>
+            <h4>{{user.username}}</h4>
+          </div>
+  
+          <div>
+            <h3>DNI</h3>
+            <h4>{{user.dni}}</h4>
+          </div>
+
+          <div *ngIf="metadata.usertype == 2">
+            <h3>Especialidad</h3>
+            <h4>{{user.specialty}}</h4>
+          </div>
+  
+          
+  
+        </div>
+      </mat-card>
+    </div>
+    
+    
+</div>

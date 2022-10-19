@@ -1,0 +1,11 @@
+.contenedor{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* border: 2px solid red; */
+    height: 100%;
+    justify-items: center; 
+}
+.btns button{
+    margin-left: 20px;
+    
+}

@@ -1,0 +1,35 @@
+.contenedor{
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid red; */
+}
+
+.header{
+    text-align: center;
+}
+
+.subtitle-appointment{
+    background-color: black;
+    color: white;
+    /* background-color: #F1F2F8; */
+}
+.appointment-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.subtitle-customer{
+    background-color: black;
+    color: white;
+    /* background-color: #F1F2F8; */
+}
+
+.atributes{
+    background-color: #F1F2F8;
+}
+
+.customer-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

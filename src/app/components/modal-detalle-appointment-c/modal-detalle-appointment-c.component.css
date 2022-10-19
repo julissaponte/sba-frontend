@@ -1,0 +1,118 @@
+.contenedor{
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid red; */
+}
+
+.header{
+    text-align: center;
+}
+
+.subtitle-appointment{
+    background-color: black;
+    color: white;
+    /* background-color: #F1F2F8; */
+}
+.appointment-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.subtitle-customer{
+    background-color: black;
+    color: white;
+    /* background-color: #F1F2F8; */
+}
+.atributes{
+    background-color: #F1F2F8;
+}
+
+.customer-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contener {
+    width: 90%;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.c-md-12 {
+    width: 100%;
+}
+.c-md-6 {
+    width: 50%;
+}
+.c-md-4 {
+    width: 33.333333%;
+}
+.content {
+    padding: 20px;
+}
+.c-md-12.title {
+    text-align: center;
+}
+.c-md-12 h1 {
+    text-align: center;
+}
+.c-md-12 hr {
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    width: 100px;
+}
+
+.share {
+    display: flex;
+    justify-content: center;
+}
+.share a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0 5px 5px 5px;
+    -webkit-border-radius: 0 5px 5px 5px;
+    -moz-border-radius: 0 5px 5px 5px;
+    -ms-border-radius: 0 5px 5px 5px;
+    -o-border-radius: 0 5px 5px 5px;
+    transition: all 400ms ease;
+    -webkit-transition: all 400ms ease;
+    -moz-transition: all 400ms ease;
+    -ms-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+}
+
+.share .whatsapp {
+    background: #018101cb;
+}
+.share .whatsapp:hover {
+    color: #018101cb;
+    background: transparent;
+    border: 1px dashed #018101cb;
+}
+
+.share .telegram {
+    background: #229ED9;
+}
+.share .telegram:hover {
+    color: #050599;
+    background: transparent;
+    border: 1px dashed #050599;
+}
+
+.contener img{ 
+    transition:all 0.5s ease-out; border-radius:50px;
+}
+.contener img:hover{
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    transform:translate(0px, -10px); 
+}

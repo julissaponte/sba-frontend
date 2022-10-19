@@ -1,0 +1,15 @@
+.logo{
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+.flex-expand {
+    flex: 1 1 auto;
+}
+
+.app-name {
+    padding-left: 10px;
+    padding-right: 10px;
+}

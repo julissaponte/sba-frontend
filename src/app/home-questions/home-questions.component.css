@@ -1,0 +1,26 @@
+details{
+    background: whitesmoke;
+    padding: .5rem;
+    border-radius: 6px;
+    margin: .5rem;
+    cursor: pointer;
+
+}
+.preguntas{
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+summary{
+    list-style: none;
+}
+
+summary::before{
+    content: '+';
+    padding-right: 1rem;
+
+}
+
+details[open] summary::before{
+    content: '-';
+}

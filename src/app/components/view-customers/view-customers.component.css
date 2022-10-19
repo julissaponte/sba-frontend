@@ -1,0 +1,31 @@
+.contenedor{
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 20px;
+    height: auto;
+}
+
+.header-contenedor{
+    /* border: 2px solid green; */
+    display: grid;
+    grid-template-columns: 70% auto;
+    align-items: center;
+}
+
+.body-contenedor{
+    /* border: 2px solid blue; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: auto;
+
+}
+
+.example-card {
+    margin: 50px;
+    max-width: 270px;
+    max-height: 300px;
+}
