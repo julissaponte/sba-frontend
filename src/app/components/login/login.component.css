@@ -17,15 +17,36 @@ mat-form-field{
 
 .header-form{
     margin-bottom: 20px;
+    background-color:#6DD6DD
 }
 
-.logo{
-    width: 220px;
-    height: 170px;
+.logo {
+    width: 250px;
+    height: 125px;
 }
 
 .form-login{
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    background-color: #6DD6DD;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 60%;
+    height: 50%;
+    border: 0;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 50px;
+}
+
+.btn:hover {
+    background: white;
+    color: #2C2C2C;
+    transition: 0.5s;
 }

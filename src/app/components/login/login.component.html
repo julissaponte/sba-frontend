@@ -9,7 +9,7 @@
     <div>
         <img class="logo" src="../../../assets/img/avatar.png" alt="">
     </div>
-    
+    <br>
     <form [formGroup]="loginForm" class="form-login">
 
         <mat-form-field appearance="fill">
@@ -27,11 +27,11 @@
         <span>
             <a routerLink="/register">¿Aun no tienes una cuenta?</a>
         </span>
-
-        <button (click)="login()" class="button-login" [disabled]="loginForm.invalid" mat-raised-button color="primary">
-            INGRESAR
-        </button>
-
+        <div>
+            <button (click)="login()" class="btn" [disabled]="loginForm.invalid" mat-raised-button color="primary">
+                INGRESAR
+            </button>
+        </div>
     </form>
 
 </mat-card>

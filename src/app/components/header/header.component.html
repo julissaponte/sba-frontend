@@ -1,11 +1,9 @@
 
 <div class="container cabecera">
-    <mat-toolbar color="primary">
+    <mat-toolbar style="background-color:#6DD6DD">
         <mat-toolbar-row>
-            <img class="logo" src="../../../assets/img/avatar.png" alt="">
           <span class="app-name">SBA</span>
-          
-
+        
           <div routerLinkActive="active" *ngIf="metadata">
             <a mat-button  (click)="toHomePage()">Inicio</a>
             <a mat-button  [routerLink]="'/customers'" *ngIf="metadata.usertype == 2">Clientes</a>

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.headerText{
+    font-family: 'Poppins', sans-serif;;
+}
+
 .citas{
     margin-top: 50px;
     margin-left: 10%;
