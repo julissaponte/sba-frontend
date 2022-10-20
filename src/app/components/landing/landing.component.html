@@ -1,110 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SBA</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
-</head>
+    <body>
+        <nav class="sidebar">
+            <a href="#home" class="sidebar-item">Inicio</a>
+            <a href="#about" class="sidebar-item">Nosotros</a>
+            <a href="#services" class="sidebar-item">Servicios</a>
+            <a routerLink="/login" class="sidebar-item" >Nuestra App</a>
+            <a href="#contact" class="sidebar-item">Contacto</a>
+            <a href="javascript:void(0)" class="close"><i class="fa fa-times"></i></a>
+        </nav>
 
-<body>
-<nav class="sidebar">
-    <a href="#home" class="sidebar-item"><i class="fas fa-home"></i> Inicio</a>
-    <a href="#about" class="sidebar-item">Acerca de nosotros</a>
-    <a href="#services" class="sidebar-item">Servicios</a>
-    <a href="#contact" class="sidebar-item">Contáctanos</a>
-    <a routerLink="/login" class="sidebar-item" >Iniciar sesión</a>
-    <a routerLink="/register" class="sidebar-item" >Registrate</a>
-    <a href="javascript:void(0)" class="close"><i class="fa fa-times"></i></a>
-</nav>
-<a href="javascript:void(0)" class="open"><i class="fa fa-bars"></i></a>
-<header id="home">
-    <img src="../../../assets/img/avatar.png" alt="Mi foto" class="avatar">
-    <h2 class="header-name">D-HOME TECHNICAL</h2>
-    <h5 class="header-title">Encuentra los técnicos más solicitados y 100% confiables o únete a nuestra gran comunidad de trabajadores independientes aquí...Todo en un solo lugar</h5>
-    <a href="#" class="btn">
-        Conócenos más
-    </a>
-</header>
-<section id="about">
-    <div class="container">
-        <h1 class="section-title">Acerca de nosotros</h1>
-        <p class="about-content">
-            Somos una plataforma que surgió en el 2020 debido a la crisis que está atravesando actualmente el Perú.
-            Nuestra plataforma busca que más personas logren mostrar sus habilidades al público. Por ello, nuestro
-            objetivo es proporcionar
-            la mejor experiencia entre nuestros clientes y usuarios, trabajadores independientes.
-            D-Home Technical une trabajadores independientes con clientes que requieran diferentes servicios.
-            Además, contamos con un excelente equipo, dedicado y amigable; asimismo, luchamos cada día para mejorar nuestra plataforma y darles excelente soporte. ¡Lo hacemos con una sonrisa!
-            <br>
-            <!-- <center>
-              <img src="img/fondos/cliente.jpg" title="Inicio de clientes">
-        <img src="img/fondos/trabajador.jpg" title="Inicio de trabajadores">
-            </center> -->
+        <a href="javascript:void(0)" class="open"><i class="fa fa-bars"></i></a>
 
+        <header id="home">
+            <h1 class="header-title">Contrata en línea a los mejores freelancers para cualquier trabajo</h1>
+            <a href="#contact" class="btn">Contáctanos</a>
+        </header>
 
-        </p>
-
-    </div>
-</section>
-<section id="services">
-    <div class="container">
-        <h1 class="section-title">Servicios</h1>
-        <div class="card">
-            <i class="fas fa-home"></i>
-            <div class="container">
-                <h4 class="title">Servicio a domicilio</h4>
-                <p>El usuario (trabajador independiente) podrá compartir sus trabajos ya realizados anteriormente, y
-                    los clientes tendrán la opción de publicar una reseña. Además, valorar al usuario con respecto al servicio brindado.</p>
+        <section id="about">
+            <div class="container ">
+                <div class="content">
+                    <div class="info">
+                        <h1 class="section-title">Nosotros</h1>
+                        <p>
+                            NeoTech es una empresa emergente que se creó con el fin de ofrecer soluciones tecnológicas que cubran las necesidades de las personas mediante el desarrollo de aplicaciones web o móviles.
+                            <br><br>
+                            Misión: Crecer como competidor nacional en el mercado de préstamo de servicios de hogar al brindar soluciones tecnológicas eficientes generando valor para nuestro grupo de interés.
+                        </p>
+                    </div>
+                    <img class="section-img" src="../../../assets/img/landing/foto-nosotros.png">
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <i class="fas fa-user"></i>
+        </section>
+
+        <section id="services">
             <div class="container">
-                <h4 class="title">Cliente</h4>
-                <p> El cliente tendrá la opción de búsqueda simple y con filtros, para así obtener una respuesta que se adapte a él. Además, podrá visualizar
-                diferentes técnicos que se mostraran en un ranking de los más solicitados y con las mejores reseñas.</p>
+                <h1 class="section-title">Nuestros servicios</h1>
+                <p class="mb-3">Puedes solicitar un técnico especialista en las siguientes categorías</p>
+                <div class="grid">
+                    <div class="one">
+                        <img src="../../../assets/img/landing/foto-carpinteria.png">
+                        <h4 class="title">Carpintería</h4>
+                    </div>
+                    <div class="two">
+                        <img src="../../../assets/img/landing/foto-limpieza.png">
+                        <h4 class="title">Limpieza</h4>
+                    </div>
+                    <div class="three">
+                        <img src="../../../assets/img/landing/foto-instalaciones.png">
+                        <h4 class="title">Instalaciones</h4>
+                    </div>
+                    <div class="four">
+                        <img src="../../../assets/img/landing/foto-pintura.png">
+                        <h4 class="title">Pintura</h4>
+                    </div>
+                    <div class="five">
+                        <img src="../../../assets/img/landing/foto-albanileria.png">
+                        <h4 class="title">Albañilería</h4>
+                    </div>
+                    <div class="six">
+                        <img src="../../../assets/img/landing/foto-electricidad.png">
+                        <h4 class="title">Electridad</h4>
+                    </div>
+                </div>
+                <a href="#" class="btn">Ver más</a>            
             </div>
-        </div>
+        </section>
 
-    </div>
-</section>
-<section id="contact">
-    <div class="container">
-        <h1 class="section-title">Contáctanos</h1>
-        <form>
-            <label>
-                <input type="text" class="form-input" placeholder="Nombre">
-            </label>
-            <label>
-                <input type="text" class="form-input" placeholder="Correo electrónico">
-            </label>
-            <label>
-                <input type="text" class="form-input" placeholder="Asunto">
-            </label>
-            <label>
-                <textarea class="form-input" cols="30" rows="5"> </textarea>
-            </label>
-            <button type="button" class="form-button"> Enviar </button>
-        </form>
-    </div>
-</section>
-<footer>
-    <div class="icons">
+        <section id="'contacta'">
+            <div class="container">
+                <div class="content">
+                    <img class="section-img" src="../../../assets/img/landing/foto-nosotros.png">
+                    <div class="info">
+                        <h1 class="section-title">Contacta profesionales al servicio del hogar </h1>
+                        <p>
+                            NeoTech es una empresa emergente que se creó con el fin de ofrecer soluciones tecnológicas que cubran las necesidades de las personas mediante el desarrollo de aplicaciones web o móviles.
+                            <br><br>
+                            Misión:
+                            Crecer como competidor nacional en el mercado de préstamo de servicios de hogar al brindar soluciones tecnológicas eficientes generando valor para nuestro grupo de interés.
+                            <br><br>
+                            Visión:
+                            Ser la empresa líder en el préstamo de servicios de hogar de técnicos especializados en el Perú para contribuir con el desarrollo económico del país.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="contact">
+            <div class="ccontainer">
+                <h1 class="section-title">¡Contáctanos!</h1>
+                <p class="mb-3">Ingresa tus datos y obtén más información</p>
+                <form>
+                    <label>
+                        <input type="text" class="form-input" placeholder="Nombre">
+                    </label>
+                    <label>
+                        <input type="text" class="form-input" placeholder="Apellido">
+                    </label>
+                    <label>
+                        <input type="text" class="form-input" placeholder="Address">
+                    </label>
+                    <label>
+                        <input type="email" class="form-input" placeholder="E-mail">
+                    </label>
+                    <label>
+                        <textarea class="form-input" rows="5" name="Mensaje">Mensaje</textarea>
+                    </label>
+                    <button type="button" class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
 
-        <a href="#" class="fab fa-facebook-f"></a><a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-whatsapp"></a>
-    </div>
-    <p>Síguenos en todas nuestras redes sociales</p>
-    <p> contáctanos:d-home@gmail.com</p>
-</footer>
+        <footer id="footer">
+            <div class="container">
+                <h1 class="section-title">SBA</h1>
+                <div class="icons">
+                    <a href="#" class="fab fa-facebook-f icon icon-f"></a>
+                    <a href="#" class="fab fa-instagram icon"></a>
+                    <a href="#" class="fab fa-twitter icon"></a>
+                </div>
+                <p>sba@gmail.com</p>
+            </div>
+            <div class="bar">
+                <p>@2022 SBA. All rights reserved</p>
+            </div>
+        </footer>
 
-<script src="./js/main.js"></script>
-</body>
-
+        <script src="./js/main.js"></script>
+    </body>
 </html>
