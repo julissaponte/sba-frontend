@@ -10,9 +10,9 @@ import { Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  userInfo: any;
   account: Account = {
-    username:'',
+    email:'',
     password:'',
     typeuser:null
   };
@@ -46,20 +46,25 @@ export class LoginComponent implements OnInit {
   login(){
 
     let obj = {
-      username: this.usuario.value,
+      email: this.usuario.value,
       password: this.password.value
     }
     this.authService.login(obj).subscribe(res=>{
-
-      localStorage.setItem('metadata', JSON.stringify(res))
-      if(res.usertype == 1) {
+      this.userInfo = {
+        id: res.id,
+        email: res.email,
+        userType: res.userType,
+      }
+      localStorage.setItem('metadata', JSON.stringify(this.userInfo))
+      localStorage.setItem('token', res.token)
+      if(res.userType == "Customer") {
         this.router.navigateByUrl('/home-customer');
-      } else if(res.usertype == 2) { 
+      } else if(res.userType == "Technician") { 
         this.router.navigateByUrl('/home-employee');
       }
       console.log(res);
     })
-    console.log(this.account.username, this.account.password)
+    console.log(this.account.email, this.account.password)
   }
 
 }

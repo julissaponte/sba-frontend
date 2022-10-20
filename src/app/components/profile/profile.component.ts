@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
+import { TechnicianService } from '../../services/technician.service';
 import { CustomerService } from '../../services/customer.service';
 import { ModalEditProfileComponent } from '../modal-edit-profile/modal-edit-profile.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private employeeService: EmployeeService,
+  constructor(private technicianService: TechnicianService,
               private customerService: CustomerService,
               public dialog: MatDialog) { }
 
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.progress_bar = true;
     if(this.metadata.usertype == 1){
-      this.customerService.getCustomerByIdAccount(this.metadata.id).subscribe(res=>{
+      this.customerService.getCustomerById(this.metadata.id).subscribe(res=>{
         this.data = res;
         this.progress_bar = false;
         this.user = {
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
       })
     }
     else if(this.metadata.usertype == 2){
-      this.employeeService.getEmployeeByIdAccount(this.metadata.id).subscribe(res=>{
+      this.technicianService.getTechnicianById(this.metadata.id).subscribe(res=>{
         this.data = res;
         this.progress_bar = false;
         this.user = {

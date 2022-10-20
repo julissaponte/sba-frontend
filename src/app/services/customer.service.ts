@@ -9,7 +9,7 @@ export class CustomerService {
 
  // private baseURL = 'http://localhost:8080/api/customers';
  
- private baseURL='http://localhost:8080/api/customers';
+ private baseURL='https://localhost:44321/api/customer';
 
 
   constructor(private http: HttpClient) { }
@@ -22,12 +22,12 @@ export class CustomerService {
     return this.http.post(`${this.baseURL}/validateEmail`, customer);
   }
 
-  getCustomerByIdAccount(idAccount): Observable<any> {
-    return this.http.get(`${this.baseURL}/searchByIdAccount/${idAccount}`);
+  getCustomerById(idAccount): Observable<any> {
+    return this.http.get(`${this.baseURL}/${idAccount}`);
   }
 
-  insertCustomer(customer): Observable<any> {
-    return this.http.post(`${this.baseURL}`, customer);
+  insertCustomer(userId: number, customer): Observable<any> {
+    return this.http.post(`${this.baseURL}/${userId}`, customer);
   }
 
   updateCustomer(id, customer): Observable<any> {

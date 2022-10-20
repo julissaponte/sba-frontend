@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CityService } from '../../services/city.service';
 import { SpecialtyService } from '../../services/specialty.service';
-import { EmployeeService } from '../../services/employee.service';
+import { TechnicianService } from '../../services/technician.service';
 import { CustomerService } from '../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -34,7 +34,7 @@ export class ModalEditProfileComponent implements OnInit {
               private specialtyService: SpecialtyService,
               private customerService: CustomerService,
               private _snackBar: MatSnackBar,
-              private employeeService: EmployeeService) { }
+              private technicianService: TechnicianService) { }
 
   ngOnInit() {
     this.cityAux = this.data.user.district.city;
@@ -178,7 +178,7 @@ export class ModalEditProfileComponent implements OnInit {
         }
       }
       
-      this.employeeService.updateEmployee(this.data.user.id, obj).subscribe(res =>{
+      this.technicianService.updateTechnician(this.data.user.id, obj).subscribe(res =>{
         let obj = {
           user: res,
           city: this.cityAux,

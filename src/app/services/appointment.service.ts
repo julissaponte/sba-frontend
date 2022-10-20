@@ -8,7 +8,7 @@ import { Observable} from 'rxjs'
 export class AppointmentService {
 
   
-  private baseURL='http://localhost:8080/api/appointments';
+  private baseURL='https://localhost:44321/api/appointment';
 
   //private baseURL = 'http://localhost:8080/api/appointments';
   constructor(private http: HttpClient) { }
@@ -16,11 +16,11 @@ export class AppointmentService {
   insertAppointment(appo): Observable<any> {
     return this.http.post(`${this.baseURL}`, appo);
   }
-  getAppointmentByIDEmployee(id: number): Observable<any>{
-    return this.http.get(`${this.baseURL}/searchByIdEmployee/${id}`);
+  getAppointmentByTechnicianId(id: number): Observable<any>{
+    return this.http.get(`${this.baseURL}/getappointmentsbytechnicianid/${id}`);
   }
 
-  getAppointmentByIDCustomer(id: number): Observable<any>{
-    return this.http.get(`${this.baseURL}/searchByIdCustomer/${id}`)
+  getAppointmentByCustomerId(id: number): Observable<any>{
+    return this.http.get(`${this.baseURL}/getappointmentsbycustomerid/${id}`)
   }
 }

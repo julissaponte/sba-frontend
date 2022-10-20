@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
  
   toHomePage(){
-    if(this.metadata.usertype == 1){
+    if(this.metadata.usertype == "Customer"){
       this.router.navigateByUrl('/home-customer')
     } else {
       this.router.navigateByUrl('/home-employee')
@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('metadata');
+    localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
   }
 

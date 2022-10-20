@@ -14,18 +14,18 @@
 
             <ng-container matColumnDef="firstname">
               <th mat-header-cell *matHeaderCellDef> Nombre</th>
-              <td mat-cell *matCellDef="let element"> <p class="ellipsis"><b> {{element.employee.firstName}}</b> </p> </td>
+              <td mat-cell *matCellDef="let element"> <p class="ellipsis"><b> {{element.technician.firstName}}</b> </p> </td>
             </ng-container>
           
             <ng-container matColumnDef="lastname">
               <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-              <td mat-cell *matCellDef="let element" [matTooltip]="element.titulo"> <p class="ellipsis"> <b >{{element.employee.lastName}}</b></p></td>
+              <td mat-cell *matCellDef="let element" [matTooltip]="element.titulo"> <p class="ellipsis"> <b >{{element.technician.lastName}}</b></p></td>
             </ng-container>
 
-            <ng-container matColumnDef="specialty">
+            <!-- <ng-container matColumnDef="specialty">
               <th mat-header-cell *matHeaderCellDef> Especialidad </th>
-              <td mat-cell *matCellDef="let element" [matTooltip]="element.titulo"> <p class="ellipsis"> <b >{{element.employee.specialty.name}}</b></p></td>
-            </ng-container>
+              <td mat-cell *matCellDef="let element" [matTooltip]="element.titulo"> <p class="ellipsis"> <b >{{element.technician.specialty.name}}</b></p></td>
+            </ng-container> -->
           
             <ng-container matColumnDef="fecha">
               <th mat-header-cell *matHeaderCellDef>Día de la cita </th>

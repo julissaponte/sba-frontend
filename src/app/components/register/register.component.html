@@ -1,173 +1,112 @@
 <app-header></app-header>
 <mat-card class="formulario">
-    <mat-horizontal-stepper  #stepper>
+  <mat-horizontal-stepper #stepper>
 
-        <mat-step [stepControl]="registerForm1">
-          <form [formGroup]="registerForm1">
-            <ng-template matStepLabel>Usuario y Contraseña</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Nombre de Usuario</mat-label>
-                <input matInput placeholder="Ingresa tu usuario" formControlName="usuario">
-            </mat-form-field>
-
-
-            <mat-form-field appearance="fill">
-                <mat-label>Contraseña</mat-label>
-                <input matInput placeholder="Ingresa tu contraseña" type="password" formControlName="password">
-                <mat-error *ngIf="password.hasError('minlength')">Mínimo 4 caracteres</mat-error>
-            </mat-form-field>
+    <mat-step [stepControl]="registerForm1">
+      <form [formGroup]="registerForm1">
+        <ng-template matStepLabel>Usuario y Contraseña</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre de Usuario</mat-label>
+          <input matInput placeholder="Ingresa tu usuario" formControlName="usuario">
+        </mat-form-field>
 
 
-            <mat-radio-group style="grid-column: 1/3;" aria-label="Select an option" formControlName="typeuser">
-                <mat-radio-button value="1" style="margin-right: 20px; margin-bottom: 20px;">Cliente</mat-radio-button>
-                <mat-radio-button value="2">Trabajador</mat-radio-button>
-            </mat-radio-group>
-            <div>
-
-              <button mat-raised-button color="primary" [disabled]="registerForm1.invalid" (click)="validarDatos(stepper)">Siguiente</button>
-            </div>
-          </form>
-        </mat-step>
-
-        <mat-step [stepControl]="registerForm2" label="Datos Personales" *ngIf="!firstData && account.typeuser == 1">
-          <form [formGroup]="registerForm2">
-            <mat-form-field>
-              <mat-label>Nombres</mat-label>
-              <input matInput formControlName="firstname" placeholder="Ingrese sus nombres"
-                     required>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Apellidos</mat-label>
-                <input matInput formControlName="lastname" placeholder="Ingrese sus apellidos" required>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>DNI</mat-label>
-                <input matInput formControlName="dni" placeholder="Ingrese su dni" required>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Correo</mat-label>
-                <input matInput formControlName="email" placeholder="Ingrese su correo" required>
-                <mat-error *ngIf="emailC.hasError('email')">Ingrese un email válido</mat-error>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Celular</mat-label>
-                <input matInput formControlName="cellphone" placeholder="Ingrese su numero de celular" required>
-              </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder="Ingresa tu contraseña" type="password" formControlName="password">
+          <mat-error *ngIf="password.hasError('minlength')">Mínimo 4 caracteres</mat-error>
+        </mat-form-field>
 
 
+        <mat-radio-group style="grid-column: 1/3;" aria-label="Select an option" formControlName="typeuser">
+          <mat-radio-button value="1" style="margin-right: 20px; margin-bottom: 20px;">Cliente</mat-radio-button>
+          <mat-radio-button value="2">Trabajador</mat-radio-button>
+        </mat-radio-group>
+        <div>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Ciudad</mat-label>
-                <mat-select formControlName="city"  (selectionChange)="selectCity($event)">
-                  <mat-option *ngFor="let city of cities" [value]="city.id">
-                    {{city.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="registerForm1.invalid"
+            (click)="validarDatos(stepper)">Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="registerForm2" label="Datos Personales" *ngIf="!firstData && account.typeuser == 1">
+      <form [formGroup]="registerForm2">
+        <mat-form-field>
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="firstname" placeholder="Ingrese sus nombres" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="lastname" placeholder="Ingrese sus apellidos" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="cellphone" placeholder="Ingrese su numero de celular" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description" placeholder="Agregue una breve descripción sobre usted"
+            required></textarea>
+        </mat-form-field>
+        <div>
+
+          <button mat-button color="primary" (click)="validarEmail(stepper)">Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
 
 
-              <mat-form-field appearance="fill">
-                <mat-label>Distrito</mat-label>
-                <mat-select formControlName="district" [disabled]="!districts">
-                  <mat-option *ngFor="let district of districts" [value]="district.id">
-                    {{district.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+    <mat-step [stepControl]="registerForm3" label="Datos Personales" *ngIf="!firstData && account.typeuser == 2">
+      <form [formGroup]="registerForm3">
+        <mat-form-field>
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="firstname" placeholder="Ingrese sus nombres" required>
+        </mat-form-field>
 
+        <mat-form-field>
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="lastname" placeholder="Ingrese sus apellidos" required>
+        </mat-form-field>
 
-            <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Especialidad</mat-label>
+          <mat-select formControlName="specialty" (selectionChange)="selectSpecialty($event)">
+            <mat-option *ngFor="let spe of specialties" [value]="spe.id">
+              {{spe.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-              <button mat-button  color="primary" (click)="validarEmail(stepper)">Siguiente</button>
-            </div>
-          </form>
-        </mat-step>
+        <mat-form-field>
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="cellphone" placeholder="Ingrese su numero de celular" required>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description" placeholder="Agregue una breve descripción sobre usted"
+            required></textarea>
+        </mat-form-field>
 
-        <mat-step [stepControl]="registerForm3" label="Datos Personales" *ngIf="!firstData && account.typeuser == 2">
-            <form [formGroup]="registerForm3">
-              <mat-form-field>
-                <mat-label>Nombres</mat-label>
-                <input matInput formControlName="firstname" placeholder="Ingrese sus nombres" required>
-              </mat-form-field>
+        <div>
+          <button mat-button color="primary" (click)="validarEmail(stepper)">Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
 
-              <mat-form-field>
-                <mat-label>Apellidos</mat-label>
-                <input matInput formControlName="lastname" placeholder="Ingrese sus apellidos" required>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>DNI</mat-label>
-                <input matInput formControlName="dni" placeholder="Ingrese su dni" required>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Correo</mat-label>
-                <input matInput formControlName="email" placeholder="Ingrese su correo" required>
-                <mat-error *ngIf="emailE.hasError('email')">Ingrese un email válido</mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Género</mat-label>
-                <mat-select formControlName="gender">
-                  <mat-option *ngFor="let gender of genders" [value]="gender.value">
-                    {{gender.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Especialidad</mat-label>
-                <mat-select formControlName="specialty" (selectionChange)="selectSpecialty($event)">
-                  <mat-option *ngFor="let spe of specialties" [value]="spe.id">
-                    {{spe.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Celular</mat-label>
-                <input matInput formControlName="cellphone" placeholder="Ingrese su numero de celular" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Ciudad</mat-label>
-                <mat-select formControlName="city" (selectionChange)="selectCity($event)">
-                  <mat-option *ngFor="let city of cities" [value]="city.id">
-                    {{city.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Distrito</mat-label>
-                <mat-select formControlName="district" [disabled]="!districts">
-                  <mat-option *ngFor="let district of districts" [value]="district.id">
-                    {{district.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <div>
-                <button mat-button color="primary" (click)="validarEmail(stepper)">Siguiente</button>
-              </div>
-            </form>
-          </mat-step>
-
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>Confirmar Registro</p>
-          <div>
-            <button mat-button color="primary" (click)="registrarse()">Registrarse</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-      <span style="grid-column: 1/3;">
-        <a routerLink="/login">¿Ya tienes una cuenta?</a>
-    </span>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Confirmar Registro</p>
+      <div>
+        <button mat-button color="primary" (click)="registrarse()">Registrarse</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <span style="grid-column: 1/3;">
+    <a routerLink="/login">¿Ya tienes una cuenta?</a>
+  </span>
 </mat-card>
-

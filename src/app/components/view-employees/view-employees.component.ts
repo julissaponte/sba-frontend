@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
+import { TechnicianService } from '../../services/technician.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDetailEmployeeComponent } from '../modal-detail-employee/modal-detail-employee.component';
 import { ModalCreateAppointmentComponent } from '../modal-create-appointment/modal-create-appointment.component';
@@ -18,7 +18,7 @@ export class ViewEmployeesComponent implements OnInit {
 
   progress_bar: boolean = false;
   listEmployees: any[];
-  constructor(private employeeService: EmployeeService,
+  constructor(private technicianService: TechnicianService,
               public dialog: MatDialog) { }
 
   genders: Gender[] = [
@@ -28,7 +28,7 @@ export class ViewEmployeesComponent implements OnInit {
 
   ngOnInit() {
     this.progress_bar = true;
-    this.employeeService.getAllEmployees().subscribe((res:any)=>{
+    this.technicianService.getAllTechnicians().subscribe((res:any)=>{
       this.progress_bar = false;
       this.listEmployees = res;
       console.log('employees', res)
@@ -37,7 +37,7 @@ export class ViewEmployeesComponent implements OnInit {
 
   filtrar(gender){
     this.progress_bar = true;
-    this.employeeService.getEmployeesByGender(gender).subscribe((res:any)=>{
+    this.technicianService.getTechniciansByGender(gender).subscribe((res:any)=>{
       this.progress_bar = false;
       this.listEmployees = res;
       console.log('employees', res)

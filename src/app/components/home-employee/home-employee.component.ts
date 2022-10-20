@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
+import { TechnicianService } from '../../services/technician.service';
 import { AppointmentService} from '../../services/appointment.service';
 import {MatDialog} from '@angular/material/dialog';
 // import { ModalDetalleAppointmentComponent } from '../modal-detalle-appointment/modal-detalle-appointment.component';
@@ -19,15 +19,15 @@ export class HomeEmployeeComponent implements OnInit {
   displayedColumns: string[] = ['firstname', 'lastname', 'fecha', 'address', 'status', 'details'];
 
   dataSource: any;
-  constructor(private employeeService: EmployeeService,
+  constructor(private technicianService: TechnicianService,
               private appointmentService: AppointmentService,
               public dialog: MatDialog) { }
 
   ngOnInit() {
     this.progress_bar = true;
-    this.employeeService.getEmployeeByIdAccount(this.metadata.id).subscribe((employee:any)=>{
+    this.technicianService.getTechnicianById(this.metadata.id).subscribe((technician:any)=>{
       
-      this.appointmentService.getAppointmentByIDEmployee(employee.id).subscribe(res=>{
+      this.appointmentService.getAppointmentByTechnicianId(technician.userId).subscribe(res=>{
         this.progress_bar = false;
         this.dataSource = res;
         console.log(res);

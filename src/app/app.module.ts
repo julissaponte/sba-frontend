@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModules } from './material.modules';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { ModalConfirmacionComponent } from './components/modal-confirmacion/moda
 import { ModalCreateAppointmentComponent } from './components/modal-create-appointment/modal-create-appointment.component';
 import { HomeQuestionsComponent } from './home-questions/home-questions.component';
 import { HomeRecommendationsComponent } from './home-recommendations/home-recommendations.component';
+import { AuthInterceptor } from './components/interceptor/interceptor.component';
 
 
 @NgModule({
@@ -58,7 +59,9 @@ import { HomeRecommendationsComponent } from './home-recommendations/home-recomm
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModalDetalleAppointmentCComponent, ModalDetalleAppointmentEComponent, ModalEditProfileComponent,
                     ModalDetailCustomerComponent, ModalDetailEmployeeComponent, ModalCreateAppointmentComponent]

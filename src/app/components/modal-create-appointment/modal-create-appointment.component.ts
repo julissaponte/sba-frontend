@@ -34,7 +34,7 @@ export class ModalCreateAppointmentComponent implements OnInit {
   ngOnInit() {
     console.log('data', this.data)
     this.EMPLOYEE_ID = this.data.id;
-    this.customerService.getCustomerByIdAccount(this.metadata.id).subscribe(res =>{
+    this.customerService.getCustomerById(this.metadata.id).subscribe(res =>{
       console.log('res', res)
       this.CUSTOMER_ID = res.id;
     })
