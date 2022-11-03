@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable} from 'rxjs';
-// import { environment } from '../../environments/environment'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TechnicianService {
 
-  private baseURL2 = 'https://localhost:44321/api/technician';
-
-  private baseURL='https://localhost:44321/api/technician';
+  private baseURL= environment.URL + '/technician';
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +29,7 @@ export class TechnicianService {
   }
 
   getTechniciansByGender(gender): Observable<any> {
-    return this.http.get(`${this.baseURL2}/searchByGender/${gender}`);
+    return this.http.get(`${this.baseURL}/searchByGender/${gender}`);
   }
 
   validateEmail(technician): Observable<any> {

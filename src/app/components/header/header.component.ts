@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
  
   toHomePage(){
-    if(this.metadata.usertype == "Customer"){
+    if(this.metadata.userType == "Customer"){
       this.router.navigateByUrl('/home-customer')
     } else {
       this.router.navigateByUrl('/home-employee')

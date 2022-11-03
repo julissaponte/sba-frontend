@@ -18,9 +18,6 @@ export class ModalEditProfileComponent implements OnInit {
   editForm: FormGroup;
 
   progress_bar: boolean = false;
-  cities: any[];
-  districts: any[];
-  specialties: any[];
 
   cityAux: any;
   districtAux: any;
@@ -30,27 +27,17 @@ export class ModalEditProfileComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private _formBuilder : FormBuilder,
               public dialogRef: MatDialogRef<ModalEditProfileComponent>,
-              private cityService: CityService,
-              private specialtyService: SpecialtyService,
               private customerService: CustomerService,
               private _snackBar: MatSnackBar,
               private technicianService: TechnicianService) { }
 
   ngOnInit() {
-    this.cityAux = this.data.user.district.city;
-    this.districtAux = {id:this.data.user.district.id, name: this.data.user.district.name };
-    this.specialtyAux = this.data.user.specialty;
-    
-    this.cityService.getCities().subscribe(res =>{
-      this.cities = res;
-    })
-
-    if(this.data.metadata.usertype == 1) {
+    if(this.data.metadata.userType == "Customer") {
       this.editForm = this._builderForm();
-    } else if(this.data.metadata.usertype == 2) { 
-      this.specialtyService.getSpecialties().subscribe(res =>{
-        this.specialties = res;
-      })
+    } else{ 
+      // this.specialtyService.getSpecialties().subscribe(res =>{
+      //   this.specialties = res;
+      // })
       this.editForm = this._builderForm2();
     }
     
@@ -60,60 +47,34 @@ export class ModalEditProfileComponent implements OnInit {
     let form = this._formBuilder.group({
       firstname: [this.data.user.firstName, [Validators.required, Validators.pattern(pattern)]],
       lastname: [this.data.user.lastName, [Validators.required, Validators.pattern(pattern)]],
-      cellphone: [this.data.user.cellphone, [Validators.required, Validators.pattern(pattern)]],
-      email: [this.data.user.email, [Validators.required, Validators.pattern(pattern)]],
-      dni: [this.data.user.dni, [Validators.required, Validators.pattern(pattern)]],
-      city: [this.data.user.city, [Validators.required]],
-      district: [this.data.user.district, [Validators.required]]
+      phoneNumber: [this.data.user.phoneNumber, [Validators.required, Validators.pattern(pattern)]],
+      imageUrl: [this.data.user.imageUrl, [Validators.required]],
     }) 
     return form;
   }
   /**Getters */
   get firstnameC() { return this.editForm.controls['firstname']; }
   get lastnameC() { return this.editForm.controls['lastname']; }
-  get dniC() { return this.editForm.controls['dni']; }
-  get emailC() { return this.editForm.controls['email']; }
-  get cellphoneC() { return this.editForm.controls['cellphone']; }
-  get cityC() { return this.editForm.controls['city']; }
-  get districtC() { return this.editForm.controls['district']; }
+  get phoneNumberC() { return this.editForm.controls['phoneNumber']; }
+  get imageUrlC() { return this.editForm.controls['imageUrl']}
 
   _builderForm2(){
     let pattern = '^[a-zA-Z0-9._@\-]*$';
     let form = this._formBuilder.group({
       firstname: [this.data.user.firstName, [Validators.required, Validators.pattern(pattern)]],
       lastname: [this.data.user.lastName, [Validators.required, Validators.pattern(pattern)]],
-      cellphone: [this.data.user.cellphone, [Validators.required, Validators.pattern(pattern)]],
-      email: [this.data.user.email, [Validators.required, Validators.pattern(pattern)]],
-      dni: [this.data.user.dni, [Validators.required, Validators.pattern(pattern)]],
-      birthday: [this.data.user.birthday, [Validators.required]],
-      specialty: [this.data.user.specialty.id, [Validators.required]],
-      city: [this.data.user.district.city.id, [Validators.required]],
-      district: [this.data.user.district.id, [Validators.required]]
+      phoneNumber: [this.data.user.phoneNumber, [Validators.required, Validators.pattern(pattern)]],
+      description: [this.data.user.description, [Validators.required, Validators.pattern(pattern)]],
+      imageUrl: [this.data.user.imageUrl, [Validators.required]],
     }) 
     return form;
   }
 
   get firstnameE() { return this.editForm.controls['firstname']; }
   get lastnameE() { return this.editForm.controls['lastname']; }
-  get dniE() { return this.editForm.controls['dni']; }
-  get emailE() { return this.editForm.controls['email']; }
-  get cellphoneE() { return this.editForm.controls['cellphone']; }
-  get cityE() { return this.editForm.controls['city']; }
-  get districtE() { return this.editForm.controls['district']; }
-  get birthdayE() { return this.editForm.controls['birthday']; }
-  get specialtyE() { return this.editForm.controls['specialty']; }
-
-  selectCity(event){
-    this.cityAux = event.value;
-    this.cityService.getDistrictsByCity(event.value.id).subscribe(res=>{
-      this.districts = res;
-    })
-  }
-
-  selectDistrict(event){
-    this.districtAux = event.value;
-
-  }
+  get phoneNumberE() { return this.editForm.controls['phoneNumber']; }
+  get descriptionE() { return this.editForm.controls['description']; }
+  get imageUrlE() { return this.editForm.controls['imageUrl']}
 
   selectSpecialty(event) {
     this.specialtyAux = event.value;
@@ -123,70 +84,38 @@ export class ModalEditProfileComponent implements OnInit {
   editProfile(){
     this.progress_bar = true;
 
-    if(this.data.metadata.usertype == 1) { 
+    if(this.data.metadata.userType == "Customer") { 
       
       let obj = {
-        account: {
-          id: this.data.metadata.id,
-        },
-        cellphone: this.cellphoneC.value,
-        district: {
-          city: {
-            id: this.cityAux.id
-          },
-          id: this.districtAux.id
-        },
-        dni: this.dniC.value,
-        email: this.emailC.value,
+        phoneNumber: this.phoneNumberC.value,
         firstName: this.firstnameC.value,
-        lastName: this.lastnameC.value
+        lastName: this.lastnameC.value,
+        description: "description",
+        imageUrl: this.imageUrlC.value
       }
       
-      this.customerService.updateCustomer(this.data.user.id, obj).subscribe(res =>{
-        let obj = {
-          user: res,
-          city: this.cityAux,
-          district: this.districtAux
-        }
-        
-        this.edit.emit(obj)
+      this.customerService.updateCustomer(this.data.metadata.id, obj).subscribe(res =>{
+        this.edit.emit(res)
         this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
         this.dialogRef.close(); 
         this.progress_bar = false;
       })
 
       
-    } else if(this.data.metadata.usertype == 2) {
+    } else {
       let obj = {
-        account: {
-          id: this.data.metadata.id
-        },
-        birthday: this.birthdayE.value,
-        cellphone: this.cellphoneE.value,
-        district: {
-          city: {
-            id: this.cityAux.id
-          },
-          id: this.districtAux.id
-        },
-        dni: this.dniE.value,
-        email: this.emailE.value,
+        phoneNumber: this.phoneNumberE.value,
         firstName: this.firstnameE.value,
         lastName: this.lastnameE.value,
-        specialty: {
-          id: this.specialtyAux.id
-        }
+        description: this.descriptionE.value,
+        imageUrl: this.imageUrlE.value
+        // specialty: {
+        //   id: this.specialtyAux.id
+        // }
       }
       
-      this.technicianService.updateTechnician(this.data.user.id, obj).subscribe(res =>{
-        let obj = {
-          user: res,
-          city: this.cityAux,
-          district: this.districtAux,
-          specialty: this.specialtyAux
-        }
-  
-        this.edit.emit(obj);
+      this.technicianService.updateTechnician(this.data.metadata.id, obj).subscribe(res =>{ 
+        this.edit.emit(res);
         this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
         this.dialogRef.close(); 
         this.progress_bar = false;

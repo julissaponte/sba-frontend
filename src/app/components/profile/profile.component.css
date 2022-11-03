@@ -4,16 +4,19 @@
     margin-top: 50px;
 }
 .img-profile{
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
 .button-editar{
-    float: right;
+    height: 45px;
+    border-radius: 50px;
 }
 .img-user{
     width: 200px;
     height: 200px;
+    border-radius: 50px;
 }
 
 h3{
