@@ -60,14 +60,15 @@
             <input matInput placeholder="Ingresa un link" formControlName="imageUrl">
           </mat-form-field>
 
-            <!-- <mat-form-field appearance="fill">
-                <mat-label>Especialidad</mat-label>
-                <mat-select formControlName="specialty"  (selectionChange)="selectSpecialty($event)">
-                  <mat-option *ngFor="let specialty of specialties" [value]="specialty">
-                    {{specialty.name}}
-                  </mat-option>
-                </mat-select>
-            </mat-form-field> -->
+          <!-- idealmente multiple -->
+          <mat-form-field appearance="fill">
+            <mat-label>Especialidad</mat-label>
+            <mat-select formControlName="specialty" (selectionChange)="selectSpecialty($event)">
+              <mat-option *ngFor="let spe of specialties" [value]="spe.id">
+                {{spe.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
     
             <button (click)="editProfile()" [disabled]="false" class="button-login" style="grid-column: 1/3;" mat-raised-button color="primary">

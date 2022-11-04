@@ -6,6 +6,7 @@ import { SpecialtyService } from '../../services/specialty.service';
 import { TechnicianService } from '../../services/technician.service';
 import { CustomerService } from '../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-edit-profile',
@@ -19,9 +20,8 @@ export class ModalEditProfileComponent implements OnInit {
 
   progress_bar: boolean = false;
 
-  cityAux: any;
-  districtAux: any;
   specialtyAux: any;
+  specialties: any;
 
   ID_SPECIALTY: number;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -29,19 +29,22 @@ export class ModalEditProfileComponent implements OnInit {
               public dialogRef: MatDialogRef<ModalEditProfileComponent>,
               private customerService: CustomerService,
               private _snackBar: MatSnackBar,
+              private specialtyService: SpecialtyService,
               private technicianService: TechnicianService) { }
 
   ngOnInit() {
     if(this.data.metadata.userType == "Customer") {
       this.editForm = this._builderForm();
     } else{ 
-      // this.specialtyService.getSpecialties().subscribe(res =>{
-      //   this.specialties = res;
-      // })
+      this.specialtyService.getSpecialties().subscribe(spe => {
+        this.specialties = spe;
+      })
       this.editForm = this._builderForm2();
     }
     
   }
+
+  
   _builderForm(){
     let pattern = '^[a-zA-Z0-9._@\-]*$';
     let form = this._formBuilder.group({
@@ -65,6 +68,7 @@ export class ModalEditProfileComponent implements OnInit {
       lastname: [this.data.user.lastName, [Validators.required, Validators.pattern(pattern)]],
       phoneNumber: [this.data.user.phoneNumber, [Validators.required, Validators.pattern(pattern)]],
       description: [this.data.user.description, [Validators.required, Validators.pattern(pattern)]],
+      specialty: ["", [Validators.required]],
       imageUrl: [this.data.user.imageUrl, [Validators.required]],
     }) 
     return form;
@@ -108,17 +112,25 @@ export class ModalEditProfileComponent implements OnInit {
         firstName: this.firstnameE.value,
         lastName: this.lastnameE.value,
         description: this.descriptionE.value,
-        imageUrl: this.imageUrlE.value
-        // specialty: {
-        //   id: this.specialtyAux.id
-        // }
+        imageUrl: this.imageUrlE.value,
+        specialty: this.specialtyAux
       }
       
-      this.technicianService.updateTechnician(this.data.metadata.id, obj).subscribe(res =>{ 
-        this.edit.emit(res);
-        this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
-        this.dialogRef.close(); 
-        this.progress_bar = false;
+      this.technicianService.updateTechnician(this.data.metadata.id, obj).subscribe(res =>{
+        this.specialtyService.assignSpecialty(this.data.metadata.id, this.specialtyAux).subscribe(result =>{
+          let obj = {
+            phoneNumber: res.phoneNumber,
+            firstName: res.firstName,
+            lastName: res.lastName,
+            description: res.description,
+            imageUrl: res.imageUrl,
+            specialty: this.specialtyAux
+          }
+          this.edit.emit(obj);
+          this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
+          this.dialogRef.close(); 
+          this.progress_bar = false;
+        })       
       })
 
     }
