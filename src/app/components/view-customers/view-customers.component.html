@@ -22,19 +22,14 @@
         
         <div class="card-customer" *ngFor="let customer of listCustomers">
             <mat-card class="example-card" >
-                <mat-card-header>
-                  <mat-card-title>{{customer.firstName}} {{customer.lastName}}</mat-card-title>
-                  <mat-card-subtitle>{{customer.account.username}}</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="../../../assets/img/user-1633249_1280-768x749.png" alt="Photo of a Shiba Inu">
                 <mat-card-content>
-                 
+                    <mat-card-title>{{customer.firstName}} {{customer.lastName}}</mat-card-title>
+                    <img mat-card-image src={{customer.imageUrl}} alt="">
                 </mat-card-content>
                 <mat-card-actions>
                   <button mat-raised-button (click)="abrirModalDetail(customer)" color="primary">Detalles</button>
                 </mat-card-actions>
             </mat-card>
-
         </div>
     </div>
 

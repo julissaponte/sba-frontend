@@ -2,7 +2,7 @@
   <mat-card>
     
     <div class="img-profile">
-      <img class="img-user" src="../../../assets/img/user-1633249_1280-768x749.png" alt="">
+      <img class="img-user" src="{{customer.imageUrl}}" alt="">
     </div>
     
     <div class="datos">
@@ -18,32 +18,13 @@
 
       <div>
         <h3>Cellphone</h3>
-        <h4>{{customer.cellphone}}</h4>
+        <h4>{{customer.phoneNumber}}</h4>
       </div>
 
       <div>
         <h3>Email</h3>
-        <h4>{{customer.email}}</h4>
-      </div>
-
-      <div>
-        <h3>City</h3>
-        <h4>{{customer.district.city.name}}</h4>
-      </div>
-
-      <div>
-        <h3>District</h3>
-        <h4>{{customer.district.name}}</h4>
-      </div> 
-
-
-      <div>
-        <h3>Dni</h3>
-        <h4>{{customer.dni}}</h4>
-      </div>
-
-
-      
+        <h4>{{customer.user.email}}</h4>
+      </div>     
 
     </div>
   </mat-card>

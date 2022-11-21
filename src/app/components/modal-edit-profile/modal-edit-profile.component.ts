@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Output, EventEmitter  } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { CityService } from '../../services/city.service';
 import { SpecialtyService } from '../../services/specialty.service';
 import { TechnicianService } from '../../services/technician.service';
@@ -22,6 +22,8 @@ export class ModalEditProfileComponent implements OnInit {
 
   specialtyAux: any;
   specialties: any;
+  selectedSpecialties: number[] = [];
+  specialtiesForm = new FormControl([]);
 
   ID_SPECIALTY: number;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -41,7 +43,6 @@ export class ModalEditProfileComponent implements OnInit {
       })
       this.editForm = this._builderForm2();
     }
-    
   }
 
   
@@ -63,14 +64,17 @@ export class ModalEditProfileComponent implements OnInit {
 
   _builderForm2(){
     let pattern = '^[a-zA-Z0-9._@\-]*$';
+    this.data.user.specialties.forEach(spec => {
+      this.selectedSpecialties.push(spec.specialty.id);
+    });
     let form = this._formBuilder.group({
       firstname: [this.data.user.firstName, [Validators.required, Validators.pattern(pattern)]],
       lastname: [this.data.user.lastName, [Validators.required, Validators.pattern(pattern)]],
       phoneNumber: [this.data.user.phoneNumber, [Validators.required, Validators.pattern(pattern)]],
       description: [this.data.user.description, [Validators.required, Validators.pattern(pattern)]],
-      specialty: ["", [Validators.required]],
       imageUrl: [this.data.user.imageUrl, [Validators.required]],
-    }) 
+    });
+    this.specialtiesForm = new FormControl(this.selectedSpecialties);
     return form;
   }
 

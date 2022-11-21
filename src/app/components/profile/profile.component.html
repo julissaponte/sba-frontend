@@ -37,9 +37,11 @@
             <h4>{{user.email}}</h4>
           </div>
 
-          <div>
-            <h3>Especialidad</h3>
-            <h4>{{specialtyName}}</h4>
+          <div *ngIf="this.metadata.userType != 'Customer'">
+            <h3>Especialidades</h3>
+              <li *ngFor="let spc of user.specialties">
+                <span>{{spc.specialty.name}}</span>
+              </li>  
           </div>
   
           <!-- <div>

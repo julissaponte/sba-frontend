@@ -16,7 +16,7 @@ export class HomeEmployeeComponent implements OnInit {
   progress_bar: boolean = false;
   metadata:any = JSON.parse(localStorage.getItem('metadata'))
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'fecha', 'address', 'status', 'details'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'fecha', 'status', 'details'];
 
   dataSource: any;
   constructor(private technicianService: TechnicianService,

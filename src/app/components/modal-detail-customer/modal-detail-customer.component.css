@@ -18,8 +18,8 @@
 
 h3{
     font-size: 20px;
-    background-color: black;
-    color: white;
+    background-color: #6DD6DD;
+    color: black;
     
 }
 
@@ -29,4 +29,10 @@ h3{
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 20px;
     column-gap: 5px;
+}
+
+.img-user{
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
 }

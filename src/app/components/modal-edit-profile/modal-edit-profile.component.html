@@ -63,7 +63,7 @@
           <!-- idealmente multiple -->
           <mat-form-field appearance="fill">
             <mat-label>Especialidad</mat-label>
-            <mat-select formControlName="specialty" (selectionChange)="selectSpecialty($event)">
+            <mat-select placeholder="Especialidades" [formControl]="specialtiesForm" multiple >
               <mat-option *ngFor="let spe of specialties" [value]="spe.id">
                 {{spe.name}}
               </mat-option>

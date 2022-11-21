@@ -64,6 +64,7 @@ export class ProfileComponent implements OnInit {
             imageUrl: this.data.imageUrl,
             description: this.data.description,
             email: this.userEmail,
+            specialties: this.data.technicianSpecialties,
             // region: res.address.region,
             // province: res.address.province,
             // district: res.address.district,

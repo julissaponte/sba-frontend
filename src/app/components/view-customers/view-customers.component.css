@@ -29,3 +29,9 @@
     max-width: 270px;
     max-height: 300px;
 }
+
+.img-user{
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
+}

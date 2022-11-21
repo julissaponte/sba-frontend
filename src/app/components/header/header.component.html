@@ -6,8 +6,8 @@
         
           <div routerLinkActive="active" *ngIf="metadata">
             <a mat-button  (click)="toHomePage()">Inicio</a>
-            <a mat-button  [routerLink]="'/customers'" *ngIf="metadata.usertype == 2">Clientes</a>
-            <a mat-button  [routerLink]="'/employees'" *ngIf="metadata.usertype == 1">Técnicos Especialistas</a>
+            <a mat-button  [routerLink]="'/customers'" *ngIf="metadata.userType != 'Customer'">Clientes</a>
+            <a mat-button  [routerLink]="'/employees'" *ngIf="metadata.userType == 'Customer'">Técnicos Especialistas</a>
             <a mat-button  [routerLink]="'/profile'">Perfil</a>
             <a mat-button  [routerLink]="'/questions'"> Preguntas frecuentes</a>
             <a mat-button  [routerLink]="'/recommendations'"> Recomendaciones</a>

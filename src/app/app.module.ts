@@ -58,6 +58,7 @@ import { AuthInterceptor } from './components/interceptor/interceptor.component'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

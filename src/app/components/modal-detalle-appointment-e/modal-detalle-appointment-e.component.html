@@ -3,18 +3,18 @@
         <h1>Detalles de la cita</h1>
     </div>
     <div class="appointment-details">
-        <div class="subtitle-appointment">
-            <h2>Cita</h2>
-        </div>
+        <mat-toolbar style="background-color:#6DD6DD" class="mt-5">
+            <p class="subtitleLeftStyle">Cita</p>
+        </mat-toolbar>
         <div class="appointment-content">
-            <div>
+            <!-- <div>
                 <h3 class="atributes">Dirección</h3>
                 <h4>{{data.address}}</h4>
             </div>
-    
+     -->
             <div>
                 <h3 class="atributes">Día de la cita</h3>
-                <h4>{{data.appointmentDate}}</h4>
+                <h4>{{data.appointmentDate | date :'short'}}</h4>
             </div>
     
             <div>
@@ -29,14 +29,15 @@
     
             <div>
                 <h3 class="atributes">Método de pago</h3>
-                <h4>{{data.paymentMethod.paymentMethod}}</h4>
+                <h4>{{data.paymentMethod.name}}</h4>
             </div>
         </div>
     </div>
     <div class="customer-details">
-        <div class="subtitle-customer">
-            <h2>Datos del cliente</h2>
-        </div>
+        <mat-toolbar style="background-color:#6DD6DD" class="mt-5">
+            <p class="subtitleLeftStyle">Datos del cliente</p>
+        </mat-toolbar>
+
 
         <div class="customer-content">
             <div>
@@ -50,6 +51,11 @@
             </div>
 
             <div>
+                <h3 class="atributes">Número de teléfono</h3>
+                <h4>{{data.customer.phoneNumber}}</h4>
+            </div>
+
+            <!-- <div>
                 <h3 class="atributes">Correo</h3>
                 <h4>{{data.customer.email}}</h4>
             </div>
@@ -67,18 +73,11 @@
             <div>
                 <h3 class="atributes">Distrito</h3>
                 <h4>{{data.customer.district.name}}</h4>
-            </div>
+            </div> -->
 
-        </div>
-        
+        </div>       
 
-       
-        
-
-    </div>
-    
+    </div>   
 
 </div>
-
-<!-- <button (click)="console()" mat-raised-button color=primary >Aqui p varon</button> -->
 

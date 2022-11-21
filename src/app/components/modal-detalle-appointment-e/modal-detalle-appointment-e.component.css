@@ -10,9 +10,8 @@
 }
 
 .subtitle-appointment{
-    background-color: black;
-    color: white;
-    /* background-color: #F1F2F8; */
+    background-color: #6DD6DD;
+    color: black;
 }
 .appointment-content{
     display: grid;
@@ -20,9 +19,8 @@
 }
 
 .subtitle-customer{
-    background-color: black;
-    color: white;
-    /* background-color: #F1F2F8; */
+    background-color: #6DD6DD;
+    color: black;
 }
 
 .atributes{
