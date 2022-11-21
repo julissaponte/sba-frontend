@@ -26,52 +26,65 @@ export class ProfileComponent implements OnInit {
   userEmail: string;
   specialties: any;
   specialtyName: any;
+  
+  loadCustomer(){
+    let emptyAddress = {
+      region: "",
+      province: "",
+      district: "",
+      fullAddress: "",
+    }
+
+    this.customerService.getCustomerById(this.metadata.id).subscribe(res=>{
+      this.data = res;
+      this.authService.getUserByID(this.data.userId).subscribe(res => {
+        this.progress_bar = false;
+        this.userEmail = res.email;
+        this.user = {
+          firstName: this.data.firstName,
+          lastName: this.data.lastName,
+          phoneNumber: this.data.phoneNumber,
+          imageUrl: this.data.imageUrl,
+          email: this.userEmail,
+          userAddress: this.data.user.address != null ? this.data.user.address : emptyAddress
+        }
+      })
+    })
+  }
+
+  loadTechnician(){
+    this.technicianService.getTechnicianById(this.metadata.id).subscribe(res=>{
+      this.data = res;
+      this.authService.getUserByID(this.data.userId).subscribe(res => {
+        this.progress_bar = false;
+        this.userEmail = res.email;
+        this.specialtyService.getSpecialties().subscribe(spe => {
+          this.specialties = spe;
+        })
+        this.user = {
+          firstName: this.data.firstName,
+          lastName: this.data.lastName,
+          phoneNumber: this.data.phoneNumber,
+          imageUrl: this.data.imageUrl,
+          description: this.data.description,
+          email: this.userEmail,
+          specialties: this.data.technicianSpecialties,
+          // region: res.address.region,
+          // province: res.address.province,
+          // district: res.address.district,
+          // fullAddress: res.address.fullAddress,
+        }
+      })
+    })
+  }
+
   ngOnInit() {
     this.progress_bar = true;
     if(this.metadata.userType == "Customer"){
-      this.customerService.getCustomerById(this.metadata.id).subscribe(res=>{
-        this.data = res;
-        this.authService.getUserByID(this.data.userId).subscribe(res => {
-          this.progress_bar = false;
-          this.userEmail = res.email;
-          this.user = {
-            firstName: this.data.firstName,
-            lastName: this.data.lastName,
-            phoneNumber: this.data.phoneNumber,
-            imageUrl: this.data.imageUrl,
-            email: this.userEmail,
-            // region: res.address.region,
-            // province: res.address.province,
-            // district: res.address.district,
-            // fullAddress: res.address.fullAddress,
-          }
-        })
-      })
+      this.loadCustomer()
     }
     else{
-      this.technicianService.getTechnicianById(this.metadata.id).subscribe(res=>{
-        this.data = res;
-        this.authService.getUserByID(this.data.userId).subscribe(res => {
-          this.progress_bar = false;
-          this.userEmail = res.email;
-          this.specialtyService.getSpecialties().subscribe(spe => {
-            this.specialties = spe;
-          })
-          this.user = {
-            firstName: this.data.firstName,
-            lastName: this.data.lastName,
-            phoneNumber: this.data.phoneNumber,
-            imageUrl: this.data.imageUrl,
-            description: this.data.description,
-            email: this.userEmail,
-            specialties: this.data.technicianSpecialties,
-            // region: res.address.region,
-            // province: res.address.province,
-            // district: res.address.district,
-            // fullAddress: res.address.fullAddress,
-          }
-        })
-      })
+      this.loadTechnician()
     }
   }
 
@@ -90,24 +103,9 @@ export class ProfileComponent implements OnInit {
     dialogRef.componentInstance.edit.subscribe(data =>{
       
       if(this.metadata.userType == "Customer") {
-        this.user = {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          phoneNumber: data.phoneNumber,
-          imageUrl: data.imageUrl,
-          email: this.userEmail
-        }
+        this.loadCustomer();
       } else{
-        this.user = {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          phoneNumber: data.phoneNumber,
-          description: data.description,
-          imageUrl: data.imageUrl,
-          email: this.userEmail,
-          specialty: data.specialty
-        }
-        this.specialtyName = this.getSpecialtyName(this.user.specialty);
+        this.loadTechnician();
       }
      
     })

@@ -7,6 +7,7 @@ import { TechnicianService } from '../../services/technician.service';
 import { CustomerService } from '../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { AddressService } from 'src/app/services/address.service';
 
 @Component({
   selector: 'app-modal-edit-profile',
@@ -32,7 +33,8 @@ export class ModalEditProfileComponent implements OnInit {
               private customerService: CustomerService,
               private _snackBar: MatSnackBar,
               private specialtyService: SpecialtyService,
-              private technicianService: TechnicianService) { }
+              private technicianService: TechnicianService,
+              private addressService: AddressService) { }
 
   ngOnInit() {
     if(this.data.metadata.userType == "Customer") {
@@ -53,6 +55,10 @@ export class ModalEditProfileComponent implements OnInit {
       lastname: [this.data.user.lastName, [Validators.required, Validators.pattern(pattern)]],
       phoneNumber: [this.data.user.phoneNumber, [Validators.required, Validators.pattern(pattern)]],
       imageUrl: [this.data.user.imageUrl, [Validators.required]],
+      region: [this.data.user.userAddress.region, [Validators.required]],
+      province: [this.data.user.userAddress.province, [Validators.required]],
+      district: [this.data.user.userAddress.district, [Validators.required]],
+      street: [this.data.user.userAddress.fullAddress, [Validators.required]],
     }) 
     return form;
   }
@@ -61,6 +67,11 @@ export class ModalEditProfileComponent implements OnInit {
   get lastnameC() { return this.editForm.controls['lastname']; }
   get phoneNumberC() { return this.editForm.controls['phoneNumber']; }
   get imageUrlC() { return this.editForm.controls['imageUrl']}
+  get regionC() { return this.editForm.controls['region']}
+  get provinceC() { return this.editForm.controls['province']}
+  get districtC() { return this.editForm.controls['district']}
+  get streetC() { return this.editForm.controls['street']}
+
 
   _builderForm2(){
     let pattern = '^[a-zA-Z0-9._@\-]*$';
@@ -89,6 +100,23 @@ export class ModalEditProfileComponent implements OnInit {
 
   }
 
+  closeModal(){
+    this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
+    this.dialogRef.close(); 
+    this.progress_bar = false;
+  }
+
+  validateDifferenceAddress(addressOld: any, addressNew: any){
+    if (addressOld.region == addressNew.region &&
+      addressOld.province == addressNew.province &&
+      addressOld.district == addressNew.district &&
+      addressOld.fullAddress == addressNew.fullAddress)
+      return true;
+    else {
+      return false;
+    }
+  }
+
   editProfile(){
     this.progress_bar = true;
 
@@ -101,12 +129,29 @@ export class ModalEditProfileComponent implements OnInit {
         description: "description",
         imageUrl: this.imageUrlC.value
       }
+
+      let addressObj = {
+        region: this.regionC.value,
+        province: this.provinceC.value,
+        district: this.districtC.value,
+        fullAddress: this.streetC.value
+      }
       
       this.customerService.updateCustomer(this.data.metadata.id, obj).subscribe(res =>{
-        this.edit.emit(res)
-        this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
-        this.dialogRef.close(); 
-        this.progress_bar = false;
+        this.edit.emit(res);
+        if (this.validateDifferenceAddress(this.data.user.userAddress,addressObj)){
+          this.closeModal();
+        }else if (this.data.user.userAddress.fullAddress == ""|| this.data.user.userAddress.district == "" || this.data.user.userAddress.province == "" || this.data.user.userAddress.region == ""){
+          this.addressService.createAddress(this.data.metadata.id, addressObj).subscribe(res2 =>{
+            this.edit.emit(res2);
+            this.closeModal();
+          })
+        }else{
+          this.addressService.updateAddress(this.data.metadata.id, addressObj).subscribe(res3 =>{
+            this.edit.emit(res3);
+            this.closeModal();
+          })
+        }
       })
 
       
@@ -131,9 +176,7 @@ export class ModalEditProfileComponent implements OnInit {
             specialty: this.specialtyAux
           }
           this.edit.emit(obj);
-          this._snackBar.open('Se editó el perfil con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
-          this.dialogRef.close(); 
-          this.progress_bar = false;
+          this.closeModal();
         })       
       })
 

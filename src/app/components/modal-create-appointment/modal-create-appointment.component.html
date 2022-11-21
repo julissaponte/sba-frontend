@@ -1,21 +1,14 @@
 <div>
-    <h1>Create Appointment with {{data.firstName}} ({{data.specialty.name}})</h1>
+    <h1>Create Appointment with {{data.firstName}} {{data.lastName}}</h1>
   
     <mat-progress-bar *ngIf="progress_bar" mode="query"></mat-progress-bar>
   
     <div>
         <form class="formulario" [formGroup]="appointmentForm">
-    
-            <mat-form-field appearance="fill">
-                <mat-label>Dirección</mat-label>
-                <input matInput placeholder="Ingresa la direccion de la cita" formControlName="address">
-            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Día de la cita</mat-label>
-                <input matInput [matDatepicker]="picker2" formControlName="appointmentDate" [min]="TODAY_DATE">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
+                <input matInput formControlName="appointmentDate" type="datetime-local" placeholder="start date">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -26,14 +19,12 @@
             <mat-form-field appearance="fill">
                 <mat-label>Método de pago</mat-label>
                 <mat-select formControlName="paymentMethod">
-                  <mat-option *ngFor="let pms of listPMethods" [value]="pms.id">
-                    {{pms.paymentMethod}}
+                  <mat-option *ngFor="let pms of listPMethods" [value]="pms.paymentMethodId">
+                    {{pms.name}}
                   </mat-option>
                 </mat-select>
             </mat-form-field>
 
-
-    
             <button (click)="crearAppointment()" [disabled]="appointmentForm.invalid" class="button-login" style="grid-column: 1/3;" mat-raised-button color="primary">
                 CREAR
             </button>

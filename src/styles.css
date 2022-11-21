@@ -10,6 +10,12 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
     font-weight: bold;
 }
 
+.miniSubtitleLeftStyle{
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
 .miniSubtitleCenterStyle{
     display: block;
     font-size: 1.0em;

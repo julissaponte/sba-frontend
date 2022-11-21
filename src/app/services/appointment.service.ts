@@ -14,8 +14,8 @@ export class AppointmentService {
   //private baseURL = 'http://localhost:8080/api/appointments';
   constructor(private http: HttpClient) { }
 
-  insertAppointment(appo): Observable<any> {
-    return this.http.post(`${this.baseURL}`, appo);
+  insertAppointment(appointment): Observable<any> {
+    return this.http.post(`${this.baseURL}`, appointment);
   }
   getAppointmentByTechnicianId(id: number): Observable<any>{
     return this.http.get(`${this.baseURL}/getappointmentsbytechnicianid/${id}`);

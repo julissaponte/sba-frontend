@@ -7,28 +7,28 @@
             <p class="subtitleLeftStyle">Cita</p>
         </mat-toolbar>
         <div class="appointment-content">
-            <!-- <div>
+            <div>
                 <h3 class="atributes">Dirección</h3>
-                <h4>{{data.address}}</h4>
-            </div> -->   
+                <h4>{{data.userData.address.region}}, {{data.userData.address.province}}, {{data.userData.address.district}}, {{data.userData.address.fullAddress}}</h4>
+            </div>
             <div>
                 <h3 class="atributes">Fecha de la cita</h3>
-                <h4>{{data.appointmentDate | date :'short'}}</h4>
+                <h4>{{data.appointmentData.appointmentDate | date :'short'}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Descripción</h3>
-                <h4>{{data.description}}</h4>
+                <h4>{{data.appointmentData.description}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Estado</h3>
-                <h4>{{data.status}}</h4>
+                <h4>{{data.appointmentData.status}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Método de pago</h3>
-                <h4>{{data.paymentMethod.name}}</h4>
+                <h4>{{data.appointmentData.paymentMethod.name}}</h4>
             </div>
         </div>
     </div>
@@ -40,32 +40,22 @@
         <div class="customer-content">
             <div>
                 <h3 class="atributes">Nombre</h3>
-                <h4>{{data.technician.firstName}}</h4>
+                <h4>{{data.appointmentData.technician.firstName}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Apellidos</h3>
-                <h4>{{data.technician.lastName}}</h4>
+                <h4>{{data.appointmentData.technician.lastName}}</h4>
             </div>
 
-            <div>
-                <h3 class="atributes">Especialidad</h3>
-                <h4></h4>
-            </div>
-<!-- 
             <div>
                 <h3 class="atributes">Correo</h3>
-                <h4>{{data.employee.email}}</h4>
+                <h4>{{technicianEmail}}</h4>
             </div>
-
-            <div>
-                <h3 class="atributes">DNI</h3>
-                <h4>{{data.employee.dni}}</h4>
-            </div> -->
 
             <div>
                 <h3 class="atributes">Celular</h3>
-                <h4>{{data.technician.phoneNumber}}</h4>
+                <h4>{{data.appointmentData.technician.phoneNumber}}</h4>
             </div>
 
         </div>
@@ -84,9 +74,9 @@
                 </div>
                 
             </div>
-            <a href="https://api.whatsapp.com/send?phone={{data.technician.phoneNumber}}" target="_blank"><img loading="lazy" alt="Habla conmigo por WhatsApp" height="60" width="70" src="https://cdn-icons-png.flaticon.com/512/124/124034.png?w=360" title="WhatsApp"/></a>
+            <a href="https://api.whatsapp.com/send?phone={{data.appointmentData.technician.phoneNumber}}" target="_blank"><img loading="lazy" alt="Habla conmigo por WhatsApp" height="60" width="70" src="https://cdn-icons-png.flaticon.com/512/124/124034.png?w=360" title="WhatsApp"/></a>
             <a>&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href="https://t.me/+51{{data.technician.phoneNumber}}" target="_blank"><img loading="lazy" alt="Habla conmigo por Telegram" height="60" width="70" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ8ihZH3_X9WjWpuj76EGTz3o6gAJkRM8bAhKg5HY0CRE0XJamWPA1768LiKC_j_26Hek&usqp=CAU" title="Telegram"/></a>
+            <a href="https://t.me/+51{{data.appointmentData.technician.phoneNumber}}" target="_blank"><img loading="lazy" alt="Habla conmigo por Telegram" height="60" width="70" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ8ihZH3_X9WjWpuj76EGTz3o6gAJkRM8bAhKg5HY0CRE0XJamWPA1768LiKC_j_26Hek&usqp=CAU" title="Telegram"/></a>
         </div>
         <div class="row">
             <div class="c-md-12 title">

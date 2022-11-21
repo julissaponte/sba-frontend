@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { TechnicianService } from 'src/app/services/technician.service';
 
 @Component({
   selector: 'app-modal-detalle-appointment-c',
@@ -8,11 +9,16 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ModalDetalleAppointmentCComponent implements OnInit {
 
+  technicianEmail: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private technicianService: TechnicianService,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    console.log(this.data)
+    console.log(this.data);
+    this.technicianService.getTechnicianById(this.data.appointmentData.technicianId).subscribe((technician:any)=>{
+      this.technicianEmail = technician.user.email;
+    })
   }
 
 }

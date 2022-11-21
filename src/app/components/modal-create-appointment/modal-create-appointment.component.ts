@@ -33,10 +33,10 @@ export class ModalCreateAppointmentComponent implements OnInit {
 
   ngOnInit() {
     console.log('data', this.data)
-    this.EMPLOYEE_ID = this.data.id;
+    this.EMPLOYEE_ID = this.data.user.id;
     this.customerService.getCustomerById(this.metadata.id).subscribe(res =>{
       console.log('res', res)
-      this.CUSTOMER_ID = res.id;
+      this.CUSTOMER_ID = res.user.id;
     })
 
     this.paymentMethodService.getAllPaymentMethods().subscribe(res =>{
@@ -47,18 +47,15 @@ export class ModalCreateAppointmentComponent implements OnInit {
   }
 
   _builderForm(){
-    let pattern = '^[a-zA-Z0-9._@\-]*$';
     let form = this._formBuilder.group({
-      address: [null, [Validators.required]],
-      appointmentDate: [null, [Validators.required,this.dateValidator]],
-      description: [null, []],
-      paymentMethod: [null, [Validators.required, Validators.pattern(pattern)]]
+      appointmentDate: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      paymentMethod: [this.listPMethods, [Validators.required]]
     }) 
     return form;
   }
 
   /**Getters */
-  get address() { return this.appointmentForm.controls['address']; }
   get appointmentDate() { return this.appointmentForm.controls['appointmentDate']; }
   get description() { return this.appointmentForm.controls['description']; }
   get paymentMethod() { return this.appointmentForm.controls['paymentMethod']; }
@@ -67,18 +64,11 @@ export class ModalCreateAppointmentComponent implements OnInit {
     this.progress_bar = true;
     console.log(this.appointmentForm.value)
     let obj = {
-        address: this.address.value,
         appointmentDate: this.appointmentDate.value,
-        customer: {
-          id: this.CUSTOMER_ID
-        },
+        customerId: this.CUSTOMER_ID,
         description: this.description.value,
-        employee: {
-          id: this.EMPLOYEE_ID,
-        },
-        paymentMethod: {
-          id: this.paymentMethod.value,
-        },
+        technicianId: this.EMPLOYEE_ID,
+        paymentMethodId: this.paymentMethod.value,
         status: "Pendiente",
         valorization: 0
     }
@@ -89,13 +79,6 @@ export class ModalCreateAppointmentComponent implements OnInit {
       this._snackBar.open('Se creó la cita con éxito!', 'Cerrar', {duration:4000, horizontalPosition:'start'})
       this.dialogRef.close();
     })
-  }
-
-  dateValidator(AC: AbstractControl) {
-    if (AC && AC.value && !moment(AC.value, 'YYYY-MM-DD',true).isValid()) {
-      return {'dateVaidator': true};
-    }
-    return null;
   }
 
 }

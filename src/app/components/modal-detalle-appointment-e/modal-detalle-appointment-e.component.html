@@ -7,29 +7,29 @@
             <p class="subtitleLeftStyle">Cita</p>
         </mat-toolbar>
         <div class="appointment-content">
-            <!-- <div>
+            <div>
                 <h3 class="atributes">Dirección</h3>
-                <h4>{{data.address}}</h4>
+                <h4>{{customerAddress.region}}, {{customerAddress.province}}, {{customerAddress.district}}, {{customerAddress.fullAddress}}</h4>
             </div>
-     -->
+    
             <div>
                 <h3 class="atributes">Día de la cita</h3>
-                <h4>{{data.appointmentDate | date :'short'}}</h4>
+                <h4>{{data.appointmentData.appointmentDate | date :'short'}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Descripción</h3>
-                <h4>{{data.description}}</h4>
+                <h4>{{data.appointmentData.description}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Estado</h3>
-                <h4>{{data.status}}</h4>
+                <h4>{{data.appointmentData.status}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Método de pago</h3>
-                <h4>{{data.paymentMethod.name}}</h4>
+                <h4>{{data.appointmentData.paymentMethod.name}}</h4>
             </div>
         </div>
     </div>
@@ -42,37 +42,39 @@
         <div class="customer-content">
             <div>
                 <h3 class="atributes">Nombre</h3>
-                <h4>{{data.customer.firstName}}</h4>
+                <h4>{{data.appointmentData.customer.firstName}}</h4>
             </div>
     
             <div>
                 <h3 class="atributes">Apellidos</h3>
-                <h4>{{data.customer.lastName}}</h4>
+                <h4>{{data.appointmentData.customer.lastName}}</h4>
             </div>
 
             <div>
                 <h3 class="atributes">Número de teléfono</h3>
-                <h4>{{data.customer.phoneNumber}}</h4>
-            </div>
-
-            <!-- <div>
-                <h3 class="atributes">Correo</h3>
-                <h4>{{data.customer.email}}</h4>
+                <h4>{{data.appointmentData.customer.phoneNumber}}</h4>
             </div>
 
             <div>
+                <h3 class="atributes">Correo</h3>
+                <h4>{{customerEmail}}</h4>
+            </div>
+
+             
+
+            <!--<div>
                 <h3 class="atributes">DNI</h3>
-                <h4>{{data.customer.dni}}</h4>
+                <h4>{{data.appointmentData.customer.dni}}</h4>
             </div>
 
             <div>
                 <h3 class="atributes">Ciudad</h3>
-                <h4>{{data.customer.district.city.name}}</h4>
+                <h4>{{data.appointmentData.customer.district.city.name}}</h4>
             </div>
 
             <div>
                 <h3 class="atributes">Distrito</h3>
-                <h4>{{data.customer.district.name}}</h4>
+                <h4>{{data.appointmentData.customer.district.name}}</h4>
             </div> -->
 
         </div>       

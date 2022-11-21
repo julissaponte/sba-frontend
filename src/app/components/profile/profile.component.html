@@ -44,25 +44,25 @@
               </li>  
           </div>
   
-          <!-- <div>
+          <div *ngIf="this.metadata.userType == 'Customer'">
             <h3>Region</h3>
-            <h4>{{user.city}}</h4>
+            <h4>{{user.userAddress.region}}</h4>
           </div>
 
-          <div>
-            <h3>Province</h3>
-            <h4>{{user.province}}</h4>
+          <div *ngIf="this.metadata.userType == 'Customer'">
+            <h3>Provincia</h3>
+            <h4>{{user.userAddress.province}}</h4>
           </div>
   
-          <div>
+          <div *ngIf="this.metadata.userType == 'Customer'">
             <h3>Distrito</h3>
-            <h4>{{user.district}}</h4>
+            <h4>{{user.userAddress.district}}</h4>
           </div>
 
-          <div>
+          <div *ngIf="this.metadata.userType == 'Customer'">
             <h3>Calle</h3>
-            <h4>{{user.fullAddress}}</h4>
-          </div> -->
+            <h4>{{user.userAddress.fullAddress}}</h4>
+          </div>
            
         </div>
       </mat-card>

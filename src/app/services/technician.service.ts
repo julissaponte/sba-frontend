@@ -28,8 +28,8 @@ export class TechnicianService {
     return this.http.get(`${this.baseURL}/${id}`);
   }
 
-  getTechniciansByGender(gender): Observable<any> {
-    return this.http.get(`${this.baseURL}/searchByGender/${gender}`);
+  getTechniciansBySpecialtyId(specialtyId): Observable<any> {
+    return this.http.get(`${this.baseURL}/gettechniciansbyspecialtyid/${specialtyId}`);
   }
 
   validateEmail(technician): Observable<any> {

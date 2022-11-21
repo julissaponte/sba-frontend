@@ -9,7 +9,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class ModalDetailEmployeeComponent implements OnInit {
 
   metadata: any = JSON.parse(localStorage.getItem('metadata'))
-  constructor(@Inject(MAT_DIALOG_DATA) public employee: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public technician: any) { }
 
   ngOnInit() {
   }

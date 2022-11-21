@@ -19,6 +19,7 @@ export class HomeEmployeeComponent implements OnInit {
   displayedColumns: string[] = ['firstname', 'lastname', 'fecha', 'status', 'details'];
 
   dataSource: any;
+  userData: string;
   constructor(private technicianService: TechnicianService,
               private appointmentService: AppointmentService,
               public dialog: MatDialog) { }
@@ -26,7 +27,7 @@ export class HomeEmployeeComponent implements OnInit {
   ngOnInit() {
     this.progress_bar = true;
     this.technicianService.getTechnicianById(this.metadata.id).subscribe((technician:any)=>{
-      
+      this.userData = technician.user;
       this.appointmentService.getAppointmentByTechnicianId(technician.userId).subscribe(res=>{
         this.progress_bar = false;
         this.dataSource = res;
@@ -39,10 +40,14 @@ export class HomeEmployeeComponent implements OnInit {
 
   verDetalles(element){
     console.log(element);
+    let childData = {
+      appointmentData: element,
+      userData: this.userData
+    }
     const dialogRef = this.dialog.open(ModalDetalleAppointmentEComponent,{
       width: '1100px',
       height: '600px',
-      data: element 
+      data: childData 
       
     })
   }

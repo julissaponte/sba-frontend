@@ -2,54 +2,35 @@
     <mat-card>
 
       <div class="img-profile">
-        <img class="img-user" src="../../../assets/img/user-1633249_1280-768x749.png" alt="">
+        <img class="img-user" src="{{technician.imageUrl}}" alt="">
       </div>
 
       <div class="datos">
         <div>
           <h3>Nombre</h3>
-          <h4>{{employee.firstName}}</h4>
+          <h4>{{technician.firstName}}</h4>
         </div>
 
         <div>
           <h3>Apellidos</h3>
-          <h4>{{employee.lastName}}</h4>
+          <h4>{{technician.lastName}}</h4>
         </div>
 
         <div>
           <h3>Celular</h3>
-          <h4>{{employee.cellphone}}</h4>
+          <h4>{{technician.phoneNumber}}</h4>
         </div>
 
         <div>
           <h3>Correo</h3>
-          <h4>{{employee.email}}</h4>
+          <h4>{{technician.user.email}}</h4>
         </div>
 
         <div>
-          <h3>Ciudad</h3>
-          <h4>{{employee.district.city.name}}</h4>
-        </div>
-
-        <div>
-          <h3>Distrito</h3>
-          <h4>{{employee.district.name}}</h4>
-        </div>
-
-        <div >
-            <h3>Género</h3>
-            <h4>{{employee.birthday}}</h4>
-        </div>
-
-
-        <div>
-          <h3>DNI</h3>
-          <h4>{{employee.dni}}</h4>
-        </div>
-
-        <div>
-            <h3>Especialidad</h3>
-            <h4>{{employee.specialty.name}}</h4>
+            <h3>Especialidades</h3>
+            <li *ngFor="let spc of technician.technicianSpecialties">
+              {{spc.specialty.name}}
+            </li>
         </div>
 
 

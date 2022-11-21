@@ -157,16 +157,21 @@ export class RegisterComponent implements OnInit {
     this.authService.validateUser(obj).subscribe(res => {
       this.ACCOUNT = res;
       this.ID_CREATED = res.id;
-      if (!res.msj) {
-        this.firstData = false
-        stepper.next();
+      let tempLoginObj = {
+        email: res.email,
+        password: res.password
       }
-      else {
-
-        this._snackBar.open(res.msj, 'Cerrar', { duration: 4000, horizontalPosition: 'start' })
-      }
+      this.authService.login(tempLoginObj).subscribe(res=>{
+        localStorage.setItem('token', res.token);
+        if (!res.msj) {
+          this.firstData = false
+          stepper.next();
+        }
+        else {
+          this._snackBar.open(res.msj, 'Cerrar', { duration: 4000, horizontalPosition: 'start' })
+        }
+      });
     })
-
   }
 
   selectSpecialty(event) {

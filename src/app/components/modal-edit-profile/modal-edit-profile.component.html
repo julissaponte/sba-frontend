@@ -23,6 +23,33 @@
               <mat-label>Foto de perfil</mat-label>
               <input matInput placeholder="Ingresa un link" formControlName="imageUrl">
             </mat-form-field>
+        </form>
+
+        <mat-toolbar style="background-color:#6DD6DD; height: 48px;" class="mt-5">
+          <p class="miniSubtitleLeftStyle">Dirección actual</p>
+        </mat-toolbar>
+        <br>
+        <form class="formulario" [formGroup]="editForm">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Región</mat-label>
+              <input matInput placeholder="Lima" formControlName="region">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Provincia</mat-label>
+              <input matInput placeholder="Lima" formControlName="province">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Distrito</mat-label>
+              <input matInput placeholder="Santiago de Surco" formControlName="district">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Calle</mat-label>
+              <input matInput placeholder="Av. Brasil 120" formControlName="street">
+            </mat-form-field>
             
             <button (click)="editProfile()" [disabled]="false" class="button-login" style="grid-column: 1/3;" mat-raised-button color="primary">
                 EDITAR
@@ -60,7 +87,6 @@
             <input matInput placeholder="Ingresa un link" formControlName="imageUrl">
           </mat-form-field>
 
-          <!-- idealmente multiple -->
           <mat-form-field appearance="fill">
             <mat-label>Especialidad</mat-label>
             <mat-select placeholder="Especialidades" [formControl]="specialtiesForm" multiple >
