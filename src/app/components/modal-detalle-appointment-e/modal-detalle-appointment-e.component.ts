@@ -9,7 +9,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class ModalDetalleAppointmentEComponent implements OnInit {
 
-  customerAddress: string;
+  customerAddress: any;
   customerEmail: string;
   constructor(private customerService: CustomerService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
